@@ -1,3 +1,4 @@
+from tkinter import CASCADE
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin  
@@ -50,6 +51,8 @@ class IssueBook(models.Model):
 
 
 class ReturnBook(models.Model):
+    # issuebook_id = models.ForeignKey(IssueBook, on_delete=models.CASCADE)
+    issuebook_id = models.IntegerField()
     student_id =models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     book = models.ManyToManyField(Book)
     return_date = models.DateField(auto_now_add=True)

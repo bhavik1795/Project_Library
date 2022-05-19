@@ -30,7 +30,7 @@ class IssueBookSerializer(WritableNestedModelSerializer):
 
     class Meta:
         model = IssueBook
-        fields = [ 'student_id', 'issued_date', 'book']
+        fields = [ 'id', 'student_id', 'issued_date', 'book']
 
 
 
@@ -40,12 +40,6 @@ class ReturnBookSerializer(WritableNestedModelSerializer):
         model = ReturnBook
         fields = '__all__'
 
-        
-
-    # def create(self, validated_data, *args, **kwargs):
-    #     user = super(IssueBookSerializer, self).create(validated_data)
-    #     user.save()
-    #     return user
 
 
 
