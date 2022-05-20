@@ -1,3 +1,4 @@
+from pyexpat import model
 from tkinter import CASCADE
 from django.db import models
 from django.utils import timezone
@@ -38,25 +39,28 @@ class Book(models.Model):
     book_count = models.IntegerField(default=0)
     date_publisheded = models.DateField(auto_now_add=True)
     date_created = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return str(self.name)      # +" ["+str(self.id)+']'
 
 
 class IssueBook(models.Model):
-    student_id =models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    student_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     book = models.ManyToManyField(Book)
     issued_date = models.DateField(auto_now_add=True)
     
 
-
-
 class ReturnBook(models.Model):
-    # issuebook_id = models.ForeignKey(IssueBook, on_delete=models.CASCADE)
     issuebook_id = models.IntegerField()
-    student_id =models.ForeignKey(UserAccount, on_delete=models.CASCADE)
+    student_id = models.ForeignKey(UserAccount, on_delete=models.CASCADE)
     book = models.ManyToManyField(Book)
     return_date = models.DateField(auto_now_add=True)
 
+
+# class ReturnBook(models.Model):
+#     issuebook_id = models.ForeignKey(IssueBook, on_delete=models.CASCADE)
+#     book = models.ManyToManyField(Book)
+#     return_date = models.DateField(auto_now_add=True)
 
 
     

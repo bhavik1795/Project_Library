@@ -36,9 +36,12 @@ class IssueBookSerializer(WritableNestedModelSerializer):
 
 
 class ReturnBookSerializer(WritableNestedModelSerializer):
+    
     class Meta:
         model = ReturnBook
-        fields = '__all__'
+        # fields = '__all__'
+
+        fields = [ 'student_id', 'issuebook_id', 'book', 'return_date']
 
 
 
